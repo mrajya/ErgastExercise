@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ergast Assignment</title>
+	<style>
+  table, th, td {
+    border: 1px solid black;
+  }  
+  .grey {
+    color: grey; 
+  } 
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="app.js"></script>  
+</head>
+<body ng-app="ErgastApplication" ng-controller="Controller">	
+	<table ng-table="tableParams" id="request_table" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Champion</th>       
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(key, value) in O">
+        <td ng-click="listOtherPlayers(key,value)" style="color:#0000ff" class="txt sortable">{{key}}</td>
+        <td>{{value}}</td>        
+      </tr>
+    </tbody>  
+    <table ng-table="tableParams2" id="response_table" cellspacing="0" ng-show=showOtherWinnersTable>
+      <thead>
+        <tr>
+          <th>Races {{yearSelected}}</th>
+          <th>Winner</th>       
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="(key, value) in P" ng-class='{grey : value==champToBeHighlighted}''>
+          <td>{{key}}</td>
+          <td>{{value}}</td>       
+        </tr>
+      </tbody>  
+    </body>
+    </html>
